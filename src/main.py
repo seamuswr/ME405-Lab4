@@ -14,6 +14,9 @@ import gc
 import pyb
 import cotask
 import task_share
+import encoder_reader
+import MotorDriver
+import closed_loop
 
 
 def task1_fun(shares):
@@ -22,15 +25,19 @@ def task1_fun(shares):
     @param shares A list holding the share and queue used by this task
     """
     # Get references to the share and queue which have been passed to this task
-    my_share, my_queue = shares
+    enc = encoder_reader.Encoder(pyb.Pin.board.PC6, pyb.Pin.board.PC7, pyb.Timer(8, prescaler=0, period=65535))
+    moe = MotorDriver.MotorDriver(pyb.Pin.board.PC1, pyb.Pin.board.PA0, pyb.Pin.board.PA1, pyb.Timer(5, freq=20000))
 
-    counter = 0
-    while True:
-        my_share.put(counter)
-        my_queue.put(counter)
-        counter += 1
+    enc.zero()
+    close = closed_loop.ClosedLoop(0, .5)
+    output = close.run(1024, enc.read())
 
+    while(output != "End"):
+        output = close.run(1024, enc.read())
+        moe.set_duty_cycle(output)
+        
         yield 0
+    close.print_values()
 
 
 def task2_fun(shares):
@@ -39,16 +46,19 @@ def task2_fun(shares):
     @param shares A tuple of a share and queue from which this task gets data
     """
     # Get references to the share and queue which have been passed to this task
-    the_share, the_queue = shares
+    enc = encoder_reader.Encoder(pyb.Pin.board.PB6, pyb.Pin.board.PB7, pyb.Timer(4, prescaler=0, period=65535))
+    moe = MotorDriver.MotorDriver(pyb.Pin.board.PA10, pyb.Pin.board.PB4, pyb.Pin.board.PB5, pyb.Timer(3, freq=20000))
 
-    while True:
-        # Show everything currently in the queue and the value in the share
-        print(f"Share: {the_share.get ()}, Queue: ", end='')
-        while q0.any():
-            print(f"{the_queue.get ()} ", end='')
-        print('')
+    enc.zero()
+    close = closed_loop.ClosedLoop(0, .5)
+    output = close.run(1024, enc.read())
 
+    while(output != "End"):
+        output = close.run(2048, enc.read())
+        moe.set_duty_cycle(output)
+        
         yield 0
+    close.print_values()
 
 
 # This code creates a share, a queue, and two tasks, then starts the tasks. The
@@ -67,9 +77,9 @@ if __name__ == "__main__":
     # allocated for state transition tracing, and the application will run out
     # of memory after a while and quit. Therefore, use tracing only for 
     # debugging and set trace to False when it's not needed
-    task1 = cotask.Task(task1_fun, name="Task_1", priority=1, period=400,
+    task1 = cotask.Task(task1_fun, name="Task_1", priority=1, period=100,
                         profile=True, trace=False, shares=(share0, q0))
-    task2 = cotask.Task(task2_fun, name="Task_2", priority=2, period=1500,
+    task2 = cotask.Task(task2_fun, name="Task_2", priority=2, period=100,
                         profile=True, trace=False, shares=(share0, q0))
     cotask.task_list.append(task1)
     cotask.task_list.append(task2)

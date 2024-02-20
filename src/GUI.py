@@ -23,10 +23,12 @@ from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
                                                NavigationToolbar2Tk)
 KP = "0"
 
+
 def KP_input():
     global KP
     KP = input("Enter KP: ")
-    
+
+
 def plot_example(plot_axes, plot_canvas, xlabel, ylabel):
     """!
     Make an example plot to show a simple(ish) way to embed a plot into a GUI.
@@ -46,11 +48,11 @@ def plot_example(plot_axes, plot_canvas, xlabel, ylabel):
     ser.write(b'\x02')
     ser.write(b'\x04')
     # Wait for MCU to response back
-    while not ser.inWaiting():
-        pass
-    time.sleep(0.1)
-    temp = KP.encode('utf-8')
-    ser.write(temp)
+    # while not ser.inWaiting():
+    #     pass
+    # time.sleep(0.1)
+    # temp = KP.encode('utf-8')
+    # ser.write(temp)
     
     time_data = []
     voltage_data = []
@@ -76,6 +78,7 @@ def plot_example(plot_axes, plot_canvas, xlabel, ylabel):
     plot_axes.grid(True)
     plot_canvas.draw()
     ser.close()
+
 
 def tk_matplot(plot_function, input_fun, xlabel, ylabel, title):
     """!

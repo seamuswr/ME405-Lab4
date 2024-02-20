@@ -26,8 +26,8 @@ class ClosedLoop:
         self.setpoint = setpoint
         self.Kp = Kp
         self.measured_output = 0
-        self.time_queue = cqueue.IntQueue(200)
-        self.pos_queue = cqueue.IntQueue(200)
+        self.time_queue = cqueue.IntQueue(20)
+        self.pos_queue = cqueue.IntQueue(20)
         self.start_time = utime.ticks_ms()
 
     def run(self, setpoint, measured_output):
