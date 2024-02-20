@@ -8,6 +8,8 @@ This file contains code for a closed-loop control system.
 
 import cqueue
 import utime
+import encoder_reader
+import MotorDriver
 
 
 class ClosedLoop:
@@ -50,7 +52,9 @@ class ClosedLoop:
         if not self.time_queue.full():
             self.time_queue.put(utime.ticks_ms() - self.start_time)
             self.pos_queue.put(self.measured_output)
+            print(f"not full {self.setpoint}")
         else:
+            print(f"full {self.setpoint}")
             return "End"
         return actuation_value
 
@@ -87,13 +91,19 @@ if __name__ == '__main__':
     """
 
     # Initialize encoder and motor objects
-    enc = encoder_reader.Encoder(pyb.Pin.board.PC6, pyb.Pin.board.PC7, pyb.Timer(8, prescaler=0, period=65535))
-    moe = MotorDriver.MotorDriver(pyb.Pin.board.PC1, pyb.Pin.board.PA0, pyb.Pin.board.PA1, pyb.Timer(5, freq=20000))
+    enc1 = encoder_reader.Encoder(pyb.Pin.board.PC6, pyb.Pin.board.PC7, pyb.Timer(8, prescaler=0, period=65535))
+    moe1 = MotorDriver.MotorDriver(pyb.Pin.board.PC1, pyb.Pin.board.PA0, pyb.Pin.board.PA1, pyb.Timer(5, freq=20000))
+    enc2 = encoder_reader.Encoder(pyb.Pin.board.PB6, pyb.Pin.board.PB7, pyb.Timer(4, prescaler=0, period=65535))
+    moe2 = MotorDriver.MotorDriver(pyb.Pin.board.PA10, pyb.Pin.board.PB4, pyb.Pin.board.PB5, pyb.Timer(3, freq=20000))
 
     # Initialize closed-loop control object
-    close = ClosedLoop(0, .1)
+    close1 = ClosedLoop(0, .5)
+    close2 = ClosedLoop(0, .5)
 
     # Main control loop
     while True:
-        output = close.run(1000, enc.read())
-        moe.set_duty_cycle(output)
+        output1 = close1.run(1000, enc1.read())
+        moe1.set_duty_cycle(output1)
+        output2 = close2.run(2000, enc2.read())
+        moe2.set_duty_cycle(output2)
+        utime.sleep(.1)
