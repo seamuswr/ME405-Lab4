@@ -28,8 +28,8 @@ class ClosedLoop:
         self.setpoint = setpoint
         self.Kp = Kp
         self.measured_output = 0
-        self.time_queue = cqueue.IntQueue(20)
-        self.pos_queue = cqueue.IntQueue(20)
+        self.time_queue = cqueue.IntQueue(100)
+        self.pos_queue = cqueue.IntQueue(100)
         self.start_time = utime.ticks_ms()
 
     def run(self, setpoint, measured_output):
@@ -47,14 +47,12 @@ class ClosedLoop:
         """
         self.setpoint = setpoint
         self.measured_output = measured_output
-        error = self.setpoint - self.measured_output
-        actuation_value = self.Kp * error
+        error = self.measured_output - self.setpoint
+        actuation_value = self.Kp * error       
         if not self.time_queue.full():
             self.time_queue.put(utime.ticks_ms() - self.start_time)
             self.pos_queue.put(self.measured_output)
-            print(f"not full {self.setpoint}")
         else:
-            print(f"full {self.setpoint}")
             return "End"
         return actuation_value
 
@@ -80,7 +78,7 @@ class ClosedLoop:
 
         This method prints the contents of the time and position queues.
         """
-        for idx in range(200):
+        for idx in range(self.time_queue.max_full()):
             print(f'{self.time_queue.get()}, {self.pos_queue.get()}')
         print('END')
 
@@ -95,7 +93,9 @@ if __name__ == '__main__':
     moe1 = MotorDriver.MotorDriver(pyb.Pin.board.PC1, pyb.Pin.board.PA0, pyb.Pin.board.PA1, pyb.Timer(5, freq=20000))
     enc2 = encoder_reader.Encoder(pyb.Pin.board.PB6, pyb.Pin.board.PB7, pyb.Timer(4, prescaler=0, period=65535))
     moe2 = MotorDriver.MotorDriver(pyb.Pin.board.PA10, pyb.Pin.board.PB4, pyb.Pin.board.PB5, pyb.Timer(3, freq=20000))
-
+    enc1.zero()
+    enc2.zero()
+    
     # Initialize closed-loop control object
     close1 = ClosedLoop(0, .5)
     close2 = ClosedLoop(0, .5)
