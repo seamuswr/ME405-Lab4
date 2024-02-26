@@ -30,16 +30,17 @@ def task1_fun(shares):
     moe1.set_duty_cycle(0)
     enc1.zero()
     close1 = closed_loop.ClosedLoop(0, .5)
-    output1 = close1.run(1024, enc1.read())
+    output1 = 0
 
     while(output1 != "End"):
-        moe1.set_duty_cycle(output1)
         output1 = close1.run(1024, enc1.read())
-
+        moe1.set_duty_cycle(output1)
 
         yield 0
     close1.print_values()
-
+    doneShare1.put(1)
+    while (doneShare2.get() != 1):
+        yield 0
 
 def task2_fun(shares):
     """!
@@ -52,14 +53,28 @@ def task2_fun(shares):
     moe2.set_duty_cycle(0)
     enc2.zero()
     close2 = closed_loop.ClosedLoop(0, .5)
-    output2 = close2.run(1024, enc2.read())
+    output2 = 0
 
     while(output2 != "End"):
-        moe2.set_duty_cycle(output2)
         output2 = close2.run(2048, enc2.read())
-
+        moe2.set_duty_cycle(output2)
+        
         yield 0
     close2.print_values()
+    doneShare2.put(1)
+    while (doneShare1.get() != 1):
+        yield 0
+    
+#     the_share, the_queue = shares
+# 
+#     while True:
+#         # Show everything currently in the queue and the value in the share
+#         print(f"Share: {the_share.get ()}, Queue: ", end='')
+#         while q0.any():
+#             print(f"{the_queue.get ()} ", end='')
+#         print('')
+# 
+#         yield 0
 
 
 # This code creates a share, a queue, and two tasks, then starts the tasks. The
@@ -73,14 +88,17 @@ if __name__ == "__main__":
     share0 = task_share.Share('h', thread_protect=False, name="Share 0")
     q0 = task_share.Queue('L', 16, thread_protect=False, overwrite=False,
                           name="Queue 0")
-
+    doneShare1 = task_share.Share('B', thread_protect=False, name="Done Share 1")
+    doneShare2 = task_share.Share('B', thread_protect=False, name="Done Share 2")
+    doneShare1.put(0)
+    doneShare2.put(0)
     # Create the tasks. If trace is enabled for any task, memory will be
     # allocated for state transition tracing, and the application will run out
     # of memory after a while and quit. Therefore, use tracing only for 
     # debugging and set trace to False when it's not needed
-    task1 = cotask.Task(task1_fun, name="Task_1", priority=1, period=100,
+    task1 = cotask.Task(task1_fun, name="Task_1", priority=1, period=30,
                         profile=True, trace=False, shares=(share0, q0))
-    task2 = cotask.Task(task2_fun, name="Task_2", priority=2, period=70,
+    task2 = cotask.Task(task2_fun, name="Task_2", priority=2, period=10,
                         profile=True, trace=False, shares=(share0, q0))
     cotask.task_list.append(task1)
     cotask.task_list.append(task2)

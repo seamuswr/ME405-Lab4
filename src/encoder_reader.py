@@ -61,8 +61,10 @@ if __name__ == '__main__':
     """
 
     # Initialize encoder object
-    enc = Encoder(pyb.Pin.board.PC6, pyb.Pin.board.PC7, pyb.Timer(8, prescaler=0, period=65535))
+    enc1 = Encoder(pyb.Pin.board.PC6, pyb.Pin.board.PC7, pyb.Timer(8, prescaler=0, period=65535))
+    enc2 = Encoder(pyb.Pin.board.PB6, pyb.Pin.board.PB7, pyb.Timer(4, prescaler=0, period=65535))
 
     # Main loop to continuously read and print encoder position
     while (True):
-        print(enc.read())      
+        print(enc2.read())
+        time.sleep(.1)

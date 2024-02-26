@@ -49,6 +49,8 @@ class MotorDriver:
         try:
             int(duty)
         except (ValueError, IndexError):
+            self.PWM1.pulse_width_percent(0)
+            self.PWM2.pulse_width_percent(0)
             print("Invalid duty cycle")
         else:
             if duty > 0:
