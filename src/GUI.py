@@ -64,7 +64,7 @@ def plot_example(plot_axes, plot_canvas, xlabel, ylabel):
             float(line[0])
             float(line[1])
         except (ValueError, IndexError):
-            print("exception")
+            pass
         else:
             time_data.append(float(line[0]))
             voltage_data.append(float(line[1]))
