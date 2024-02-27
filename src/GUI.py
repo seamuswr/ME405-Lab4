@@ -59,12 +59,12 @@ def plot_example(plot_axes, plot_canvas, xlabel, ylabel):
     while not ser.inWaiting():
         pass
     line = ser.readline().decode('utf-8').rstrip().split(",", 1)
-    while line[0] != "END":
+    while line[0] != "Done":
         try:
             float(line[0])
             float(line[1])
         except (ValueError, IndexError):
-            pass
+            print("Exception: bad data")
         else:
             time_data.append(float(line[0]))
             voltage_data.append(float(line[1]))
