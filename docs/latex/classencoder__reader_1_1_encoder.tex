@@ -1,0 +1,95 @@
+\doxysection{encoder\+\_\+reader.\+Encoder Class Reference}
+\hypertarget{classencoder__reader_1_1_encoder}{}\label{classencoder__reader_1_1_encoder}\index{encoder\_reader.Encoder@{encoder\_reader.Encoder}}
+
+
+Class to interface with an encoder.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classencoder__reader_1_1_encoder_ae42a4503ebfc1989b3ad95fb60980739}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, enc1\+\_\+pin, enc2\+\_\+pin, timer)
+\begin{DoxyCompactList}\small\item\em Initializes the Encoder instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classencoder__reader_1_1_encoder_a0b5ad086c21a7c4c0fdcc7977b596092}{read}} (self)
+\begin{DoxyCompactList}\small\item\em Reads the encoder position and prints it. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classencoder__reader_1_1_encoder_a4f0013ab8cd7010afd07096840604a03}{zero}} (self)
+\begin{DoxyCompactList}\small\item\em Resets the encoder position to zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classencoder__reader_1_1_encoder_a29398c6964ec3f4a02721762b2d670c0}\label{classencoder__reader_1_1_encoder_a29398c6964ec3f4a02721762b2d670c0} 
+{\bfseries tim}
+\item 
+\Hypertarget{classencoder__reader_1_1_encoder_af08df1e4c3c85768c1996fc4159ccce2}\label{classencoder__reader_1_1_encoder_af08df1e4c3c85768c1996fc4159ccce2} 
+{\bfseries enc1}
+\item 
+\Hypertarget{classencoder__reader_1_1_encoder_a49a7e6baf3e605c0956cd097dc6de072}\label{classencoder__reader_1_1_encoder_a49a7e6baf3e605c0956cd097dc6de072} 
+{\bfseries enc2}
+\item 
+\Hypertarget{classencoder__reader_1_1_encoder_a9fcf756897e246d3a265c02ae601fadf}\label{classencoder__reader_1_1_encoder_a9fcf756897e246d3a265c02ae601fadf} 
+{\bfseries position}
+\item 
+\Hypertarget{classencoder__reader_1_1_encoder_adc1abb5da39328fa092b6482a9b15c99}\label{classencoder__reader_1_1_encoder_adc1abb5da39328fa092b6482a9b15c99} 
+{\bfseries last}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to interface with an encoder. 
+
+This class provides methods to interact with an encoder and read its position. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classencoder__reader_1_1_encoder_ae42a4503ebfc1989b3ad95fb60980739}\label{classencoder__reader_1_1_encoder_ae42a4503ebfc1989b3ad95fb60980739} 
+\index{encoder\_reader.Encoder@{encoder\_reader.Encoder}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!encoder\_reader.Encoder@{encoder\_reader.Encoder}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily encoder\+\_\+reader.\+Encoder.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{enc1\+\_\+pin,  }\item[{}]{enc2\+\_\+pin,  }\item[{}]{timer }\end{DoxyParamCaption})}
+
+
+
+Initializes the Encoder instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enc1\+\_\+pin} & Pin for encoder channel 1. \\
+\hline
+{\em enc2\+\_\+pin} & Pin for encoder channel 2. \\
+\hline
+{\em timer} & Timer object for the encoder. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classencoder__reader_1_1_encoder_a0b5ad086c21a7c4c0fdcc7977b596092}\label{classencoder__reader_1_1_encoder_a0b5ad086c21a7c4c0fdcc7977b596092} 
+\index{encoder\_reader.Encoder@{encoder\_reader.Encoder}!read@{read}}
+\index{read@{read}!encoder\_reader.Encoder@{encoder\_reader.Encoder}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily encoder\+\_\+reader.\+Encoder.\+read (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Reads the encoder position and prints it. 
+
+\begin{DoxyReturn}{Returns}
+\+: the position 
+\end{DoxyReturn}
+\Hypertarget{classencoder__reader_1_1_encoder_a4f0013ab8cd7010afd07096840604a03}\label{classencoder__reader_1_1_encoder_a4f0013ab8cd7010afd07096840604a03} 
+\index{encoder\_reader.Encoder@{encoder\_reader.Encoder}!zero@{zero}}
+\index{zero@{zero}!encoder\_reader.Encoder@{encoder\_reader.Encoder}}
+\doxysubsubsection{\texorpdfstring{zero()}{zero()}}
+{\footnotesize\ttfamily encoder\+\_\+reader.\+Encoder.\+zero (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Resets the encoder position to zero. 
+
+\begin{DoxyReturn}{Returns}
+\+: None 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/encoder\+\_\+reader.\+py\end{DoxyCompactItemize}

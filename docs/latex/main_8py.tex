@@ -1,0 +1,125 @@
+\doxysection{src/main.py File Reference}
+\hypertarget{main_8py}{}\label{main_8py}\index{src/main.py@{src/main.py}}
+
+
+This file contains a demonstration program that runs some tasks, an inter-\/task shared variable, and a queue.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{main_8py_a3604ba3cb5e82f0236d3c20903d2c1db}{main.\+task1\+\_\+fun}} (shares)
+\begin{DoxyCompactList}\small\item\em Task which puts things into a share and a queue. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{main_8py_a99683bfda5aff485862a4eb1e59ed25e}{main.\+task2\+\_\+fun}} (shares)
+\begin{DoxyCompactList}\small\item\em Task which takes things out of a queue and share and displays them. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8py_ac3505f4f6f9708de6f1019b15e452481}\label{main_8py_ac3505f4f6f9708de6f1019b15e452481} 
+{\bfseries main.\+share0} = task\+\_\+share.\+Share(\textquotesingle{}h\textquotesingle{}, thread\+\_\+protect=False, name="{}Share 0"{})
+\item 
+\mbox{\hyperlink{main_8py_a620a5632d27d7ea28386055b4e7b37fd}{main.\+q0}}
+\item 
+\Hypertarget{main_8py_af0c1ea9858d2f726ed3d9f71c93da3a1}\label{main_8py_af0c1ea9858d2f726ed3d9f71c93da3a1} 
+{\bfseries main.\+done\+Share1} = task\+\_\+share.\+Share(\textquotesingle{}B\textquotesingle{}, thread\+\_\+protect=False, name="{}Done Share 1"{})
+\item 
+\Hypertarget{main_8py_a4b97d0a61c324c9248d1c756846dca85}\label{main_8py_a4b97d0a61c324c9248d1c756846dca85} 
+{\bfseries main.\+done\+Share2} = task\+\_\+share.\+Share(\textquotesingle{}B\textquotesingle{}, thread\+\_\+protect=False, name="{}Done Share 2"{})
+\item 
+\mbox{\hyperlink{main_8py_af4b8f4290f8d32e70654f6deb864787f}{main.\+task1}}
+\item 
+\mbox{\hyperlink{main_8py_a99d189b8f9eb3784cf7d4e5c3241b562}{main.\+task2}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains a demonstration program that runs some tasks, an inter-\/task shared variable, and a queue. 
+
+This file runs the control system on the microcontroller.
+
+The tasks don\textquotesingle{}t really {\bfseries{do}} anything; the example just shows how these elements are created and run.
+
+\begin{DoxyAuthor}{Author}
+JR Ridgely 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2021-\/Dec-\/15 JRR Created from the remains of previous example 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+(c) 2015-\/2021 by JR Ridgely and released under the GNU Public License, Version 2.
+\end{DoxyCopyright}
+@\+Author ME405 team 8 \begin{DoxyDate}{Date}
+20-\/Feb-\/2024 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8py_a3604ba3cb5e82f0236d3c20903d2c1db}\label{main_8py_a3604ba3cb5e82f0236d3c20903d2c1db} 
+\index{main.py@{main.py}!task1\_fun@{task1\_fun}}
+\index{task1\_fun@{task1\_fun}!main.py@{main.py}}
+\doxysubsubsection{\texorpdfstring{task1\_fun()}{task1\_fun()}}
+{\footnotesize\ttfamily main.\+task1\+\_\+fun (\begin{DoxyParamCaption}\item[{}]{shares }\end{DoxyParamCaption})}
+
+
+
+Task which puts things into a share and a queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shares} & A list holding the share and queue used by this task \\
+\hline
+\end{DoxyParams}
+\Hypertarget{main_8py_a99683bfda5aff485862a4eb1e59ed25e}\label{main_8py_a99683bfda5aff485862a4eb1e59ed25e} 
+\index{main.py@{main.py}!task2\_fun@{task2\_fun}}
+\index{task2\_fun@{task2\_fun}!main.py@{main.py}}
+\doxysubsubsection{\texorpdfstring{task2\_fun()}{task2\_fun()}}
+{\footnotesize\ttfamily main.\+task2\+\_\+fun (\begin{DoxyParamCaption}\item[{}]{shares }\end{DoxyParamCaption})}
+
+
+
+Task which takes things out of a queue and share and displays them. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shares} & A tuple of a share and queue from which this task gets data \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8py_a620a5632d27d7ea28386055b4e7b37fd}\label{main_8py_a620a5632d27d7ea28386055b4e7b37fd} 
+\index{main.py@{main.py}!q0@{q0}}
+\index{q0@{q0}!main.py@{main.py}}
+\doxysubsubsection{\texorpdfstring{q0}{q0}}
+{\footnotesize\ttfamily main.\+q0}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ task\_share.Queue(\textcolor{stringliteral}{'L'},\ 16,\ thread\_protect=\textcolor{keyword}{False},\ overwrite=\textcolor{keyword}{False},}
+\DoxyCodeLine{00002\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name=\textcolor{stringliteral}{"{}Queue\ 0"{}})}
+
+\end{DoxyCode}
+\Hypertarget{main_8py_af4b8f4290f8d32e70654f6deb864787f}\label{main_8py_af4b8f4290f8d32e70654f6deb864787f} 
+\index{main.py@{main.py}!task1@{task1}}
+\index{task1@{task1}!main.py@{main.py}}
+\doxysubsubsection{\texorpdfstring{task1}{task1}}
+{\footnotesize\ttfamily main.\+task1}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ cotask.Task(task1\_fun,\ name=\textcolor{stringliteral}{"{}Task\_1"{}},\ priority=1,\ period=100,}
+\DoxyCodeLine{00002\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ profile=\textcolor{keyword}{True},\ trace=\textcolor{keyword}{False},\ shares=(share0,\ q0))}
+
+\end{DoxyCode}
+\Hypertarget{main_8py_a99d189b8f9eb3784cf7d4e5c3241b562}\label{main_8py_a99d189b8f9eb3784cf7d4e5c3241b562} 
+\index{main.py@{main.py}!task2@{task2}}
+\index{task2@{task2}!main.py@{main.py}}
+\doxysubsubsection{\texorpdfstring{task2}{task2}}
+{\footnotesize\ttfamily main.\+task2}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ cotask.Task(task2\_fun,\ name=\textcolor{stringliteral}{"{}Task\_2"{}},\ priority=2,\ period=70,}
+\DoxyCodeLine{00002\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ profile=\textcolor{keyword}{True},\ trace=\textcolor{keyword}{False},\ shares=(share0,\ q0))}
+
+\end{DoxyCode}

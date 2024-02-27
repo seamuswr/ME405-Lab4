@@ -1,0 +1,136 @@
+\doxysection{closed\+\_\+loop.\+Closed\+Loop Class Reference}
+\hypertarget{classclosed__loop_1_1_closed_loop}{}\label{classclosed__loop_1_1_closed_loop}\index{closed\_loop.ClosedLoop@{closed\_loop.ClosedLoop}}
+
+
+Represents a closed-\/loop control system.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classclosed__loop_1_1_closed_loop_a252a2b7bf028a851e0ccaddb832b465b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, setpoint, Kp)
+\begin{DoxyCompactList}\small\item\em Initializes the Closed\+Loop object with setpoint and proportional gain. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classclosed__loop_1_1_closed_loop_a48c833ac283315f075b38341efc63884}{run}} (self, setpoint, measured\+\_\+output)
+\begin{DoxyCompactList}\small\item\em Runs one iteration of the closed-\/loop control system. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classclosed__loop_1_1_closed_loop_ad4fe0e04720cf7824c211809fb69af85}{set\+\_\+setpoint}} (self, setpoint)
+\begin{DoxyCompactList}\small\item\em Sets a new setpoint for the control system. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classclosed__loop_1_1_closed_loop_a4cebaec45195ae4b4056feeb5a16f115}{set\+\_\+\+Kp}} (self, Kp)
+\begin{DoxyCompactList}\small\item\em Sets a new proportional gain for the controller. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classclosed__loop_1_1_closed_loop_abb2c97bdadb27b22fdeb0a49cb4c21d1}{print\+\_\+values}} (self)
+\begin{DoxyCompactList}\small\item\em Prints the stored timestamps and measured positions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classclosed__loop_1_1_closed_loop_a90b044da8c80071a5a9b4555359b4f80}\label{classclosed__loop_1_1_closed_loop_a90b044da8c80071a5a9b4555359b4f80} 
+{\bfseries setpoint}
+\item 
+\Hypertarget{classclosed__loop_1_1_closed_loop_adb447d23732645c2837b70bbe40b031e}\label{classclosed__loop_1_1_closed_loop_adb447d23732645c2837b70bbe40b031e} 
+{\bfseries Kp}
+\item 
+\Hypertarget{classclosed__loop_1_1_closed_loop_a0e499c2db12b94b5fd1ff23ce9d40295}\label{classclosed__loop_1_1_closed_loop_a0e499c2db12b94b5fd1ff23ce9d40295} 
+{\bfseries measured\+\_\+output}
+\item 
+\Hypertarget{classclosed__loop_1_1_closed_loop_a936d31e8d2cacfb0e9c737d842e94f2b}\label{classclosed__loop_1_1_closed_loop_a936d31e8d2cacfb0e9c737d842e94f2b} 
+{\bfseries time\+\_\+queue}
+\item 
+\Hypertarget{classclosed__loop_1_1_closed_loop_ac63646ac960f741b37fd4a24dca30eeb}\label{classclosed__loop_1_1_closed_loop_ac63646ac960f741b37fd4a24dca30eeb} 
+{\bfseries pos\+\_\+queue}
+\item 
+\Hypertarget{classclosed__loop_1_1_closed_loop_ae8291eea743344b50dcb92dd67f5ab23}\label{classclosed__loop_1_1_closed_loop_ae8291eea743344b50dcb92dd67f5ab23} 
+{\bfseries start\+\_\+time}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a closed-\/loop control system. 
+
+This class implements a closed-\/loop control system with proportional control. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classclosed__loop_1_1_closed_loop_a252a2b7bf028a851e0ccaddb832b465b}\label{classclosed__loop_1_1_closed_loop_a252a2b7bf028a851e0ccaddb832b465b} 
+\index{closed\_loop.ClosedLoop@{closed\_loop.ClosedLoop}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!closed\_loop.ClosedLoop@{closed\_loop.ClosedLoop}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily closed\+\_\+loop.\+Closed\+Loop.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{setpoint,  }\item[{}]{Kp }\end{DoxyParamCaption})}
+
+
+
+Initializes the Closed\+Loop object with setpoint and proportional gain. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em setpoint} & (float)\+: The desired value for the system to achieve. \\
+\hline
+{\em Kp} & (float)\+: The proportional gain of the controller. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classclosed__loop_1_1_closed_loop_abb2c97bdadb27b22fdeb0a49cb4c21d1}\label{classclosed__loop_1_1_closed_loop_abb2c97bdadb27b22fdeb0a49cb4c21d1} 
+\index{closed\_loop.ClosedLoop@{closed\_loop.ClosedLoop}!print\_values@{print\_values}}
+\index{print\_values@{print\_values}!closed\_loop.ClosedLoop@{closed\_loop.ClosedLoop}}
+\doxysubsubsection{\texorpdfstring{print\_values()}{print\_values()}}
+{\footnotesize\ttfamily closed\+\_\+loop.\+Closed\+Loop.\+print\+\_\+values (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Prints the stored timestamps and measured positions. 
+
+This method prints the contents of the time and position queues. \Hypertarget{classclosed__loop_1_1_closed_loop_a48c833ac283315f075b38341efc63884}\label{classclosed__loop_1_1_closed_loop_a48c833ac283315f075b38341efc63884} 
+\index{closed\_loop.ClosedLoop@{closed\_loop.ClosedLoop}!run@{run}}
+\index{run@{run}!closed\_loop.ClosedLoop@{closed\_loop.ClosedLoop}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily closed\+\_\+loop.\+Closed\+Loop.\+run (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{setpoint,  }\item[{}]{measured\+\_\+output }\end{DoxyParamCaption})}
+
+
+
+Runs one iteration of the closed-\/loop control system. 
+
+This method calculates the actuation value based on the current setpoint and measured output, and updates internal data structures with timestamps and measured positions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em setpoint} & (float)\+: The desired value for the system to achieve. \\
+\hline
+{\em measured\+\_\+output} & (float)\+: The current measured output of the system.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float or str\+: The actuation value if the queue is not full, otherwise "{}\+End"{}. 
+\end{DoxyReturn}
+\Hypertarget{classclosed__loop_1_1_closed_loop_a4cebaec45195ae4b4056feeb5a16f115}\label{classclosed__loop_1_1_closed_loop_a4cebaec45195ae4b4056feeb5a16f115} 
+\index{closed\_loop.ClosedLoop@{closed\_loop.ClosedLoop}!set\_Kp@{set\_Kp}}
+\index{set\_Kp@{set\_Kp}!closed\_loop.ClosedLoop@{closed\_loop.ClosedLoop}}
+\doxysubsubsection{\texorpdfstring{set\_Kp()}{set\_Kp()}}
+{\footnotesize\ttfamily closed\+\_\+loop.\+Closed\+Loop.\+set\+\_\+\+Kp (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{Kp }\end{DoxyParamCaption})}
+
+
+
+Sets a new proportional gain for the controller. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Kp} & (float)\+: The new proportional gain value. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classclosed__loop_1_1_closed_loop_ad4fe0e04720cf7824c211809fb69af85}\label{classclosed__loop_1_1_closed_loop_ad4fe0e04720cf7824c211809fb69af85} 
+\index{closed\_loop.ClosedLoop@{closed\_loop.ClosedLoop}!set\_setpoint@{set\_setpoint}}
+\index{set\_setpoint@{set\_setpoint}!closed\_loop.ClosedLoop@{closed\_loop.ClosedLoop}}
+\doxysubsubsection{\texorpdfstring{set\_setpoint()}{set\_setpoint()}}
+{\footnotesize\ttfamily closed\+\_\+loop.\+Closed\+Loop.\+set\+\_\+setpoint (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{setpoint }\end{DoxyParamCaption})}
+
+
+
+Sets a new setpoint for the control system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em setpoint} & (float)\+: The new desired value for the system to achieve. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/closed\+\_\+loop.\+py\end{DoxyCompactItemize}
